@@ -35,9 +35,9 @@ CREATE TABLE transactions (
 ## API Endpoints
 The Retail Reward Program REST API exposes the following endpoints:
 
-* GET /customers/{id}: Retrieves customer details by ID.\
-* GET /customers: Retrieves a list of all customers.\
-* POST /customers: Creates a new customer.\
+* GET /customers/{id}: Retrieves customer details by ID. \
+* GET /customers: Retrieves a list of all customers. \
+* POST /customers: Creates a new customer. \
 * PUT /customers/{id}: Updates a customer by ID.\
 * DELETE /customers/{id}: Deletes a customer by ID.\
 * GET /transactions/{id}: Retrieves transactions for a customer by ID.\
