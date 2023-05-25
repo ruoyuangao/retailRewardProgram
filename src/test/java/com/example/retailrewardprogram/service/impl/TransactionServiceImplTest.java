@@ -28,11 +28,13 @@ class TransactionServiceImplTest {
         transactionService = new TransactionServiceImpl(transactionRepository);
     }
 
+    /**
+     * Test case for creating a sample transaction
+     */
     @Test
     void createTransactionTest() {
         // Create a sample transaction
         Transaction transaction = new Transaction();
-        // Set the required fields of the transaction
         transaction.setAmount(100.0);
         transaction.setCustomerId(1);
 
@@ -44,6 +46,9 @@ class TransactionServiceImplTest {
         verifyNoMoreInteractions(transactionRepository);
     }
 
+    /**
+     * Test case for retrieving trasaction list from a normal customer by ID.
+     */
     @Test
     void getTransactionByCustomerIdTest() {
         int customerId = 123;
@@ -51,13 +56,10 @@ class TransactionServiceImplTest {
         // Create a sample list of transactions
         List<Transaction> transactions = new ArrayList<>();
         Transaction transaction1 = new Transaction();
-        // Set required fields of transaction1
         transactions.add(transaction1);
 
         // Mock repository method
         when(transactionRepository.findByCustomerId(customerId)).thenReturn(transactions);
-
-        // Invoke the method under test
         List<Transaction> result = transactionService.getTransactionByCustomerId(customerId);
 
         // Verify the repository method invocation
@@ -68,16 +70,16 @@ class TransactionServiceImplTest {
         assertEquals(transactions, result);
     }
 
+    /**
+     * Test case for retrieving trasaction list from a non-existing customer by ID.
+     */
     @Test
     void getTransactionByCustomerIdNotFoundTest() {
         int customerId = 123;
-
         // Mock repository method to return null
         when(transactionRepository.findByCustomerId(customerId)).thenReturn(null);
-
         // Invoke the method under test and assert that it throws the expected exception
         assertThrows(RuntimeException.class, () -> transactionService.getTransactionByCustomerId(customerId));
-
         // Verify the repository method invocation
         verify(transactionRepository, times(1)).findByCustomerId(customerId);
     }

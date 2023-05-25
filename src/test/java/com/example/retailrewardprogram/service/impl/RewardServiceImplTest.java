@@ -40,6 +40,9 @@ public class RewardServiceImplTest {
         rewardService = new RewardServiceImpl(transactionRepository, customerRepository);
     }
 
+    /**
+     * Test if the calculation method satisfy the request
+     */
     @Test
     public void calculateRewardPointsTest() {
         double amount = 120;
@@ -48,6 +51,9 @@ public class RewardServiceImplTest {
         assertEquals(expectedRewardPoints, actualRewardPoints, 0.01); // Specify a delta for double comparison
     }
 
+    /**
+     * Test if the rewrad info is retrived properly
+     */
     @Test
     void getRewardInfoTest() {
         // Create a sample customer

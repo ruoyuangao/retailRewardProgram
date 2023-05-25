@@ -17,6 +17,9 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the CustomerServiceImpl class.
+ */
 class CustomerServiceImplTest {
 
     private CustomerService customerService;
@@ -30,36 +33,36 @@ class CustomerServiceImplTest {
         customerService = new CustomerServiceImpl(customerRepository);
     }
 
+    /**
+     * Test case for creating a customer.
+     */
     @Test
     void createCustomerTest() {
         Customer customer = new Customer();
-        // Set required fields of customer
-
-        // Invoke the method under test
         customerService.createCustomer(customer);
-
         // Verify that the save method of the repository is called once
         verify(customerRepository, times(1)).save(customer);
     }
 
+    /**
+     * Test case for deleting a customer by ID.
+     */
     @Test
     void deleteCustomerByIdTest() {
         int customerId = 123;
-
-        // Invoke the method under test
         customerService.deleteCustomerById(customerId);
 
         // Verify that the deleteById method of the repository is called once with the specified ID
         verify(customerRepository, times(1)).deleteById(customerId);
     }
 
+    /**
+     * Test case for updating a customer by ID.
+     */
     @Test
     void updateCustomerByIdTest() {
         int customerId = 123;
         Customer customer = new Customer();
-        // Set required fields of customer
-
-        // Invoke the method under test
         customerService.updateCustomerById(customerId, customer);
 
         // Verify that the save method of the repository is called once with the updated customer
@@ -67,18 +70,17 @@ class CustomerServiceImplTest {
         assertEquals(customerId, customer.getCustomerId());
     }
 
+    /**
+     * Test case for retrieving a customer by ID.
+     */
     @Test
     void getCustomerByIdTest() {
-        int customerId = 123;
-
         // Create a sample customer
+        int customerId = 123;
         Customer customer = new Customer();
-        // Set required fields of customer
 
         // Mock repository method
         when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
-
-        // Invoke the method under test
         Customer result = customerService.getCustomerById(customerId);
 
         // Verify the repository method invocation
@@ -89,10 +91,12 @@ class CustomerServiceImplTest {
         assertEquals(customer, result);
     }
 
+    /**
+     * Test case for retrieving a non-existing customer by ID.
+     */
     @Test
     void getCustomerByIdNotFoundTest() {
         int customerId = 123;
-
         // Mock repository method to return null
         when(customerRepository.findById(customerId)).thenReturn(Optional.empty());
 
@@ -103,22 +107,20 @@ class CustomerServiceImplTest {
         verify(customerRepository, times(1)).findById(customerId);
     }
 
+    /**
+     * Test case for retrieving all customers.
+     */
     @Test
     void getAllCustomersTest() {
         // Create a sample list of customers
         List<Customer> customers = new ArrayList<>();
         Customer customer1 = new Customer();
-        // Set required fields of customer1
         customers.add(customer1);
-
         Customer customer2 = new Customer();
-        // Set required fields of customer2
         customers.add(customer2);
 
         // Mock repository method
         when(customerRepository.findAll()).thenReturn(customers);
-
-        // Invoke the method under test
         List<Customer> result = customerService.getAllCustomers();
 
         // Verify the repository method invocation
