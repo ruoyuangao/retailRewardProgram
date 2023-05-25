@@ -71,7 +71,7 @@ public class RewardServiceImpl implements RewardService {
 
         // Assumption: three month is on a rolling basis -> allows for a continuous and ongoing accumulation of rewards.
         // Example: if today is 05-25-2023, then the latest three month means: 02-26-2023 - 05-25-2023. It is not based on the nature month.
-        // TODO: In the real scenario, double check the request.
+        // In the real scenario, double check the request.
         int monthDuration = 3;
         LocalDate endDate = LocalDate.now();
         LocalDate startDate = endDate.minus(monthDuration, ChronoUnit.MONTHS);
