@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Service interface for managing reward-related operations.
+ */
 @Service
 public interface RewardService {
     public double calculateRewardPoints(double amount);

@@ -1,10 +1,18 @@
+/*
+SQL Script to insert data into customers and transactions tables
+*/
+
+-- Delete existing data from customers table
 DELETE FROM customers;
+-- Insert data into customers table
 INSERT INTO customers (`name`, email) VALUES
     ('Kelly', 'kelly@example.com'),
     ('Steven', 'steven@example.com'),
     ('Jack', 'jack@example.com');
 
+-- Delete existing data from transactions table
 DELETE FROM transactions;
+-- Insert data into transactions table
 INSERT INTO transactions (customer_id, created_date, amount) VALUES
      ((SELECT customer_id FROM customers WHERE `name` = 'Kelly'), '2022-04-12', 0.15),
      ((SELECT customer_id FROM customers WHERE `name` = 'Kelly'), '2023-02-05', 75.25),

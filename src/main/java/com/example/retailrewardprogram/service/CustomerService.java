@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service interface for managing customer-related operations.
+ */
 @Service
 public interface CustomerService {
     void createCustomer(Customer customer);

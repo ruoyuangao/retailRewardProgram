@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Handles the exception thrown when a requested resource is not found.
+     *
+     * @param e The exception representing the resource not found error.
+     * @return ResponseEntity containing the error response with appropriate HTTP status.
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> handleNotFoundException(Exception e) {
         // Log the error
@@ -19,6 +25,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Resource not found", HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Handles other types of exceptions that are not specifically handled.
+     *
+     * @param e The exception to be handled.
+     * @return ResponseEntity containing the error response with appropriate HTTP status.
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleOtherException(Exception e) {
         // Log the error

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service interface for managing transaction-related operations.
+ */
 @Service
 public interface TransactionService {
 

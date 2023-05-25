@@ -9,6 +9,7 @@ import com.example.retailrewardprogram.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
     public void createTransaction(Transaction transaction) {
         this.transactionRepository.save(transaction);
     }
